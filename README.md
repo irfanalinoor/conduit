@@ -24,8 +24,8 @@
 - Run All Tests in Headed Chrome `npm run test:chrome:headed`
 - Run Web-UI Tests `npm run test:web`
 - Run API Tests `npm run test:api`
-- Generate JSON Report `npm run test:report:json`
-- Generate HTML Report `npm run test:report:html`
+- Generate JSON Report `npx mochawesome-merge mochawesome-report/*.json > mochawesome.json`
+- Generate HTML Report `npx marge mochawesome.json`
 
 ## Test Scenarios - [Test Report Summary](http://htmlpreview.github.io/?https://github.com/irfanalinoor/conduit/blob/master/mochawesome-report/mochawesome.html)
 
