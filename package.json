@@ -25,6 +25,8 @@
     "cypress": "4.11.0",
     "cypress-plugin-tab": "^1.0.1",
     "faker": "4.1.0",
-    "mochawesome": "^6.1.1"
+    "mochawesome": "^6.1.1",
+    "mochawesome-merge": "^4.1.0",
+    "mochawesome-report-generator": "^5.1.0"
   }
 }
