@@ -1,0 +1,176 @@
+{
+	"info": {
+		"_postman_id": "9c3b52df-a7b5-4e23-8a54-0e1449f9c416",
+		"name": "conduitAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "users-login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7458ffd8-6c81-46b0-9ed6-71a3e3dac8c5",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.globals.set(\"token\", jsonData.user.token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"user\": {\r\n    \"email\": \"john.smith.2020@gmail.com\",\r\n    \"password\": \"johnsmith2020\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://conduit.productionready.io/api/users/login",
+					"protocol": "https",
+					"host": [
+						"conduit",
+						"productionready",
+						"io"
+					],
+					"path": [
+						"api",
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users-signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user\": {\r\n        \"username\": \"john.smith.2d020\",\r\n        \"email\": \"john.smith.202d0@gmail.com1\",\r\n        \"password\": \"johnsmith202d0\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://conduit.productionready.io/api/users",
+					"protocol": "https",
+					"host": [
+						"conduit",
+						"productionready",
+						"io"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-tags",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://conduit.productionready.io/api/tags",
+					"protocol": "https",
+					"host": [
+						"conduit",
+						"productionready",
+						"io"
+					],
+					"path": [
+						"api",
+						"tags"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-articles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://conduit.productionready.io/api/articles?limit=5&offset=0",
+					"protocol": "https",
+					"host": [
+						"conduit",
+						"productionready",
+						"io"
+					],
+					"path": [
+						"api",
+						"articles"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "5"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post-article",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"article\": {\r\n        \"title\": \"article title\",\r\n        \"description\": \"article description\",\r\n        \"body\": \"article body\",\r\n        \"tagList\": []\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://conduit.productionready.io/api/articles",
+					"protocol": "https",
+					"host": [
+						"conduit",
+						"productionready",
+						"io"
+					],
+					"path": [
+						"api",
+						"articles"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
