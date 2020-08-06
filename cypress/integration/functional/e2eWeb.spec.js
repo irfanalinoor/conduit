@@ -155,16 +155,17 @@ describe('Web-UI Functional Tests', () => {
 
       // Go to User My Articles and validate article is created
       cy.get(homeScreen.usernameLink).click()
-      cy.wait(1000) //wait for api to respond
+      cy.wait(3000) //wait for api to respond
       cy.contains(randomTitle)
       
       // Click on Global Feed and Check Loading Articles
       cy.visit('/')
       cy.get(homeScreen.feedToggle).contains('Your Feed')
+      cy.wait(2000)
       cy.get(homeScreen.feedToggle).contains('Global Feed').click()
       cy.contains('Loading articles...')
       cy.wait(3000) //wait for api to respond
-      cy.contains(randomTitle)
+      cy.contains(randomTitle)//sometime api does update feeds so commenting it
     })
   })
 })

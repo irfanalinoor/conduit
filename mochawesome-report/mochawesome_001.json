@@ -1,0 +1,258 @@
+{
+  "stats": {
+    "suites": 4,
+    "tests": 6,
+    "passes": 6,
+    "pending": 0,
+    "failures": 0,
+    "start": "2020-08-06T21:00:11.165Z",
+    "end": "2020-08-06T21:02:05.838Z",
+    "duration": 114673,
+    "testsRegistered": 6,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "88cf7bdc-e028-4660-a49f-e8d1fc8729bb",
+      "title": "",
+      "fullFile": "cypress\\integration\\functional\\e2eWeb.spec.js",
+      "file": "cypress\\integration\\functional\\e2eWeb.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "69d9bfbb-0589-4352-8846-70c6326edeca",
+          "title": "Web-UI Functional Tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "14c1cb6e-ad09-4db0-b3bf-a35092f5f8e7",
+              "title": "Test New User SignUp",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Should NOT SignUp with existing user",
+                  "fullTitle": "Web-UI Functional Tests Test New User SignUp Should NOT SignUp with existing user",
+                  "timedOut": null,
+                  "duration": 13662,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.get(homeScreen.signUpLink).click();\n(0, _helperFunctions.enterSignUpDetail)(existingUser.userName, existingUser.userEmail, existingUser.userPassword);\ncy.get(signUpScreen.signUpButton).click(); //check existing user sign up error messages\ncy.get(signUpScreen.signUpError).should('be.visible');\ncy.get(signUpScreen.signUpError).contains(_validations.EXISTING_EMAIL_ERROR);\ncy.get(signUpScreen.signUpError).contains(_validations.EXISTING_USERNAME_ERROR);",
+                  "err": {},
+                  "uuid": "8efe68fc-b030-49eb-8c9e-0df45150d815",
+                  "parentUUID": "14c1cb6e-ad09-4db0-b3bf-a35092f5f8e7",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "Should Successfully SignUp new user and LogOut",
+                  "fullTitle": "Web-UI Functional Tests Test New User SignUp Should Successfully SignUp new user and LogOut",
+                  "timedOut": null,
+                  "duration": 12378,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "//Generate Random UserName, Email, Password\nvar rand_username = faker.internet.userName();\nvar rand_useremail = faker.internet.email();\nvar rand_userpassword = faker.internet.password();\ncy.get(homeScreen.signUpLink).click();\n(0, _helperFunctions.enterSignUpDetail)(rand_username, rand_useremail, rand_userpassword);\ncy.get(signUpScreen.signUpButton).click(); // check home screen show username after successfull sign up\ncy.get(homeScreen.usernameLink).should('be.visible');\ncy.get(homeScreen.usernameLink).contains(rand_username); // go to setting and logout \ncy.get(homeScreen.settingLink).click();\ncy.get(settingScreen.logoutButton).click();",
+                  "err": {},
+                  "uuid": "ac7e08dd-38a2-481d-9a72-1a7f45c54960",
+                  "parentUUID": "14c1cb6e-ad09-4db0-b3bf-a35092f5f8e7",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "8efe68fc-b030-49eb-8c9e-0df45150d815",
+                "ac7e08dd-38a2-481d-9a72-1a7f45c54960"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 26040,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "c9eb99e4-c00e-4499-958e-83802fab46e5",
+              "title": "Test Existing User SignIn",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Should NOT Login with Invalid Email, Password",
+                  "fullTitle": "Web-UI Functional Tests Test Existing User SignIn Should NOT Login with Invalid Email, Password",
+                  "timedOut": null,
+                  "duration": 20063,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.get(homeScreen.signInLink).click(); // check error message for empty email, password\ncy.get(signInScreen.signInButton).click();\ncy.wait(2000); //wait for api to respond\ncy.get(signInScreen.signInError).should('be.visible');\ncy.get(signInScreen.signInError).contains(_validations.INVALID_EMAIL_PASSWORD_ERROR); // check error message for valid email, invalid password\n(0, _helperFunctions.enterSignInDetail)(existingUser.userEmail, 'INVALIDPASWORD');\ncy.get(signInScreen.signInButton).click();\ncy.wait(2000); //wait for api to respond\ncy.get(signInScreen.signInError).should('be.visible');\ncy.get(signInScreen.signInError).contains(_validations.INVALID_EMAIL_PASSWORD_ERROR); // check error message for invalid email, valid password\n(0, _helperFunctions.enterSignInDetail)('INVALID_EMAIL@GMAIL.COM', existingUser.userPassword);\ncy.get(signInScreen.signInButton).click();\ncy.wait(2000); //wait for api to respond\ncy.get(signInScreen.signInError).should('be.visible');\ncy.get(signInScreen.signInError).contains(_validations.INVALID_EMAIL_PASSWORD_ERROR);",
+                  "err": {},
+                  "uuid": "4114fec7-5212-4e92-9716-9a9e8c78794f",
+                  "parentUUID": "c9eb99e4-c00e-4499-958e-83802fab46e5",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "Should Successfully Login with Valid Email, Password and LogOut",
+                  "fullTitle": "Web-UI Functional Tests Test Existing User SignIn Should Successfully Login with Valid Email, Password and LogOut",
+                  "timedOut": null,
+                  "duration": 8558,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.get(homeScreen.signInLink).click(); // check error message for empty email, password\n(0, _helperFunctions.enterSignInDetail)(existingUser.userEmail, existingUser.userPassword);\ncy.get(signInScreen.signInButton).click();\ncy.wait(1000); //wait for api to respond\n// check home screen show username after successfull sign up\ncy.get(homeScreen.usernameLink).should('be.visible');\ncy.get(homeScreen.usernameLink).contains(existingUser.userName); // go to setting and logout\ncy.get(homeScreen.settingLink).click();\ncy.get(settingScreen.logoutButton).click();",
+                  "err": {},
+                  "uuid": "c0f97e12-cf9b-4957-bc29-3942cb8417a3",
+                  "parentUUID": "c9eb99e4-c00e-4499-958e-83802fab46e5",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "4114fec7-5212-4e92-9716-9a9e8c78794f",
+                "c0f97e12-cf9b-4957-bc29-3942cb8417a3"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 28621,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "82a07be3-cc3f-4777-8ab3-9b813e1af2d4",
+              "title": "Validate New Article is Created and Displayed in Feeds",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Check Validation Messages on Create Article",
+                  "fullTitle": "Web-UI Functional Tests Validate New Article is Created and Displayed in Feeds Check Validation Messages on Create Article",
+                  "timedOut": null,
+                  "duration": 9184,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.get(homeScreen.signInLink).click();\n(0, _helperFunctions.enterSignInDetail)(existingUser.userEmail, existingUser.userPassword);\ncy.get(signInScreen.signInButton).click(); // Navigate to 'New Article' page\ncy.get(homeScreen.newArticleLink).click(); // Check Validations on 'New Article' page\ncy.get(newArticleScreen.publishButton).click();\ncy.get(newArticleScreen.articleError).should('be.visible');\ncy.get(newArticleScreen.articleError).contains(_validations.BLANK_TITLE_ERROR);\ncy.get(newArticleScreen.articleError).contains(_validations.TITLE_TOO_SHORT_ERROR);\ncy.get(newArticleScreen.articleError).contains(_validations.BLANK_BODY_ERROR);\ncy.get(newArticleScreen.articleError).contains(_validations.BLANK_DESC_ERROR);\ncy.get(newArticleScreen.articleError).contains(_validations.DESC_TOO_SHORT_ERROR);",
+                  "err": {},
+                  "uuid": "284923cd-d625-4470-9d63-85cd5eb1a3e1",
+                  "parentUUID": "82a07be3-cc3f-4777-8ab3-9b813e1af2d4",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "SignUp and Create Article using Random User and check Article is shown in Global Feed and My Artiles",
+                  "fullTitle": "Web-UI Functional Tests Validate New Article is Created and Displayed in Feeds SignUp and Create Article using Random User and check Article is shown in Global Feed and My Artiles",
+                  "timedOut": null,
+                  "duration": 49244,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "//Generate Random UserName, Email, Password\nvar randomNewUserName = faker.internet.userName();\nvar randomNewUserEmail = faker.internet.email();\nvar randomNewUserPassword = faker.internet.password();\nvar randomTitle = faker.name.jobTitle();\nvar randomDescription = faker.lorem.sentence();\nvar randomBody = faker.lorem.paragraphs();\nvar randomTags = faker.lorem.words();\ncy.get(homeScreen.signUpLink).click();\n(0, _helperFunctions.enterSignUpDetail)(randomNewUserName, randomNewUserEmail, randomNewUserPassword);\ncy.get(signUpScreen.signUpButton).click(); // Create new article and submit\ncy.get(homeScreen.newArticleLink).click();\n(0, _helperFunctions.enterArticleDetail)(randomTitle, randomDescription, randomBody, randomTags);\ncy.get(newArticleScreen.publishButton).click();\ncy.wait(2000); //wait for api to respond\n// Go to User My Articles and validate article is created\ncy.get(homeScreen.usernameLink).click();\ncy.wait(3000); //wait for api to respond\n// cy.contains(randomTitle)\n// Click on Global Feed and Check Loading Articles\ncy.visit('/');\ncy.get(homeScreen.feedToggle).contains('Your Feed');\ncy.wait(2000);\ncy.get(homeScreen.feedToggle).contains('Global Feed').click();\ncy.contains('Loading articles...');\ncy.wait(3000); //wait for api to respond\n// cy.contains(randomTitle)//sometime api does update feeds so commenting it",
+                  "err": {},
+                  "uuid": "0cbdc1ee-8c63-4a32-b386-811a2db0d2df",
+                  "parentUUID": "82a07be3-cc3f-4777-8ab3-9b813e1af2d4",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "284923cd-d625-4470-9d63-85cd5eb1a3e1",
+                "0cbdc1ee-8c63-4a32-b386-811a2db0d2df"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 58428,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.1.1"
+    },
+    "marge": {
+      "options": {
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.1.0"
+    }
+  }
+}

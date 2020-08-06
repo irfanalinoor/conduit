@@ -24,3 +24,5 @@
 - Run All Tests in Headed Chrome `npm run test:chrome:headed`
 - Run Web-UI Tests `npm run test:web`
 - Run API Tests `npm run test:api`
+- Generate JSON Report `npm run test:report:json`
+- Generate HTML Report `npm run test:report:html`
