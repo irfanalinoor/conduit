@@ -26,3 +26,29 @@
 - Run API Tests `npm run test:api`
 - Generate JSON Report `npm run test:report:json`
 - Generate HTML Report `npm run test:report:html`
+
+## Test Scenarios - [Test Report Summary](http://htmlpreview.github.io/?https://github.com/irfanalinoor/conduit/blob/master/mochawesome-report/mochawesome.html)
+
+````
+Web-UI Functional Tests
+    Test New User SignUp
+      √ Should NOT SignUp with existing user (13662ms)
+      √ Should Successfully SignUp new user and LogOut (12378ms)
+    Test Existing User SignIn
+      √ Should NOT Login with Invalid Email, Password (20063ms)
+      √ Should Successfully Login with Valid Email, Password and LogOut (8558ms)
+    Validate New Article is Created and Displayed in Feeds
+      √ Check Validation Messages on Create Article (9184ms)
+      √ SignUp and Create Article using Random User and check Article is shown in Global Feed and My Artiles (49244ms)
+      
+API Functional Tests
+    Test USER-SIGNUP-POST API
+      √ Validate Status 422, response  for EXISTING USER-SIGNUP-POST Request (1266ms)
+      √ Validate Status 200, response for NEW USER-SIGNUP-POST Request (744ms)
+    Test USER-LOGIN-POST API
+      √ Validate Status 422, response  for INVALID USER-LOGIN-POST Request  (815ms)
+      √ Validate Status 200, response  for VALID USER-LOGIN-POST Request (795ms)
+    Test TAGS-GET API
+      √ Validate Status 200, response for TAGS-GET Request (1189ms)
+    Test GET-GLOBAL-ARTICLE-FEED API
+      √ Validate Status 200, response for GET-GLOBAL-ARTICLE-FEED Request (701ms)
