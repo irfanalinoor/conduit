@@ -5,5 +5,3 @@ workflows:
   build:
     jobs:
       - cypress/run
-      - yarn mochawesome-merge > mochawesome.json
-      - yarn marge mochawesome.json
