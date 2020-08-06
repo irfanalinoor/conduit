@@ -163,6 +163,7 @@ describe('Web-UI Functional Tests', () => {
       cy.get(homeScreen.feedToggle).contains('Your Feed')
       cy.get(homeScreen.feedToggle).contains('Global Feed').click()
       cy.contains('Loading articles...')
+      cy.wait(3000) //wait for api to respond
       cy.contains(randomTitle)
     })
   })
