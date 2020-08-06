@@ -9,9 +9,7 @@
     "test:chrome:headed": "cypress run --headed --browser chrome",
     "test:chrome:headless": "cypress run --headless --browser chrome",
     "test:web": "cypress run --spec cypress/integration/functional/e2eWEB.spec.js",
-    "test:api": "cypress run --spec cypress/integration/functional/api.spec.js",
-    "test:report:json": "npx mochawesome-merge mochawesome-report/*.json > mochawesome.json",
-    "test:report:html": "npx marge mochawesome.json"
+    "test:api": "cypress run --spec cypress/integration/functional/api.spec.js"
   },
   "repository": {
     "type": "git",
