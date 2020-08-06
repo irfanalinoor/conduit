@@ -2,7 +2,7 @@ import {
     USERS_LOGIN_ENDPOINT,
     USERS_SIGNUP_ENDPOINT,
     TAGS_ENDPOINT,
-    ARTICLES_ENDPOINT
+    GET_ARTICLES_ENDPOINT
    } from '../constants/apiEndPoint'
 
 import {
@@ -94,6 +94,22 @@ import {
           expect(response.status).to.eq(200)
           expect(response.body).to.be.an('object')
           expect(response.body).to.have.property('tags')
+        })
+      
+      })
+  
+    })
+
+    context('Test GET-GLOBAL-ARTICLE-FEED API', () => {
+        
+      it('Validate Status 200, response for GET-GLOBAL-ARTICLE-FEED Request', () => {
+
+        cy.request('GET',GET_ARTICLES_ENDPOINT).as('articlesGetResponse')
+        
+        cy.get('@articlesGetResponse').should((response) => {
+          expect(response.status).to.eq(200)
+          expect(response.body).to.be.an('object')
+          expect(response.body).to.have.property('articles')
         })
       
       })
