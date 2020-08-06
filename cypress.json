@@ -1,0 +1,24 @@
+{
+    "baseUrl": "https://demo.realworld.io/#/",
+    "chromeWebSecurity": false,
+    "isIntegrationTest": false,
+    "video": false,
+    "videoUploadOnPasses": false,
+    "watchForFileChanges": true,
+    "env": {
+      "ENV": "development"
+    },
+    "reporter": "mochawesome",
+    "reporterOptions": {
+      "overwrite": false,
+      "html": false,
+      "json": true
+    },
+    "testFiles": "**/*.spec.*",
+    "fixturesFolder": "cypress/fixtures",
+    "integrationFolder": "cypress/integration",
+    "pluginsFile": "cypress/plugins/index.js",
+    "screenshotsFolder": "cypress/screenshots",
+    "videosFolder": "cypress/videos",
+    "supportFile": "cypress/support/index.js"
+  }

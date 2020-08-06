@@ -1,0 +1,30 @@
+{
+  "name": "conduit",
+  "version": "1.0.0",
+  "description": "qa task",
+  "main": "index.js",
+  "scripts": {
+    "test:runner": "cypress open",
+    "test": "cypress run",
+    "test:chrome:headed": "cypress run --headed --browser chrome",
+    "test:chrome:headless": "cypress run --headless --browser chrome",
+    "test:web": "cypress run --spec cypress/integration/functional/e2eWEB.spec.js",
+    "test:api": "cypress run --spec cypress/integration/functional/api.spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/irfanalinoor/conduit.git"
+  },
+  "author": "Irfan Ali Noor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/irfanalinoor/conduit/issues"
+  },
+  "homepage": "https://github.com/irfanalinoor/conduit#readme",
+  "devDependencies": {
+    "cypress": "4.11.0",
+    "cypress-plugin-tab": "^1.0.1",
+    "faker": "4.1.0",
+    "mochawesome": "^6.1.1"
+  }
+}
